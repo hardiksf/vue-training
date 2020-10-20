@@ -2,7 +2,7 @@
 
 ## Demo
 ### Notes
-![Notes.png](./src/assets/notes.gif)
+![Notes.png](./my-app/src/assets/notes.gif)
 
 ## To create a new project, run:
 ```
@@ -21,7 +21,7 @@ vue add bootstrap-vue
 "bootstrap": "^4.5.2",
 "mutationobserver-shim": "^0.3.7",
 ```
-## Project setup
+## Project setup (from my-app location)
 ```
 npm install
 ```
