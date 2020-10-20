@@ -1,5 +1,9 @@
 # my-app
 
+## Demo
+### Notes
+![clear.png](./src/assets/notes.gif)
+
 ## To create a new project, run:
 ```
 vue create my-app
