@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <UsingAxios />
     <Notes appTitle="Notes" />
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
@@ -9,12 +10,14 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue';
 import Notes from './components/Notes.vue';
+import UsingAxios from './components/UsingAxios.vue';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     Notes,
+    UsingAxios,
   },
 };
 </script>
