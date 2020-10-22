@@ -2,7 +2,10 @@
 
 ## Demo
 ### Notes
-![Notes.png](./my-app/src/assets/notes.gif)
+![notes.png](./my-app/src/assets/notes.gif)
+
+### Activity
+![activity.png](./my-app/src/assets/activity.gif)
 
 ## To create a new project, run:
 ```
@@ -47,7 +50,7 @@ const app = Vue.createApp(...)
 app.use(VueAxios, axios)
 ```
 
-- import axios in component (*.vue file) and use it via `mounted` lifecycle hook
+- import axios in component (*.vue file) and use it (Example of using it via `mounted` lifecycle hook)
 ```
 <script>
 import axios from 'axios';
