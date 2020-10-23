@@ -26,21 +26,28 @@ export default {
       type: null,
     };
   },
-
-  watch: {
-    numberOfPeople(numberOfPeople) {
+  methods: {
+    updateActivity(numberOfPeople) {
       axios
         .get(
           `http://www.boredapi.com/api/activity?participants=${numberOfPeople}`,
         )
         .then((response) => {
-          // "activity": "Bake a pie with some friends", "type": "cooking", "participants": 3,
-          // "price": 0.3, "link": "", "key": "3141592", "accessibility": 0.3 }
+        // "activity": "Bake a pie with some friends", "type": "cooking", "participants": 3,
+        // "price": 0.3, "link": "", "key": "3141592", "accessibility": 0.3 }
           const { data } = response;
           this.activity = data.activity;
           this.type = data.type;
         });
     },
+  },
+  watch: {
+    numberOfPeople(numberOfPeople) {
+      this.updateActivity(numberOfPeople);
+    },
+  },
+  created() {
+    this.updateActivity(this.numberOfPeople);
   },
 };
 </script>
