@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <CoffeePlan/>
     <ClickCounter />
     <Activity />
     <UsingAxios />
@@ -15,6 +16,7 @@ import HelloWorld from './components/HelloWorld.vue';
 import Notes from './components/Notes.vue';
 import UsingAxios from './components/UsingAxios.vue';
 import ClickCounter from './components/ClickCounter.vue';
+import CoffeePlan from './components/CoffeePlan.vue';
 
 export default {
   name: 'App',
@@ -24,6 +26,7 @@ export default {
     Notes,
     UsingAxios,
     ClickCounter,
+    CoffeePlan,
   },
 };
 </script>

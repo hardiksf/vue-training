@@ -14,3 +14,8 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.click-counter
+  margin: 20vw 0
+</style>
