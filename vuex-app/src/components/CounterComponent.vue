@@ -42,6 +42,9 @@ export default {
     decrement() {
       this.$store.commit('decrement');
     },
+    completedToDos() {
+      return this.$getters.completedToDos;
+    },
   },
 };
 </script>
