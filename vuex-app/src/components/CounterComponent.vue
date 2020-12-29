@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div>completedToDosFromGetters: {{ completedToDosFromGetters }}</div>
+    <div>doneToDosCount: {{ doneToDosCount }}</div>
     <div>count: {{ count }}</div>
     <div>countAlias: {{ countAlias }}</div>
     <div>dataFromStatePlusFromLocal: {{ dataFromStatePlusFromLocal }}</div>
@@ -27,6 +29,14 @@ export default {
     countAlias: 'count',
     dataFromStatePlusFromLocal(state) {
       return state.count + this.localCount;
+    },
+    // Compute derived state based on store state
+    doneToDosCount() {
+      return this.$store.state.toDos.filter((toDo) => toDo.done).length;
+    },
+    // Accessing getters
+    completedToDosFromGetters() {
+      return this.$store.getters.completedToDos.length;
     },
   }),
   // We can also pass a string array to mapState when the name of a mapped computed property is
