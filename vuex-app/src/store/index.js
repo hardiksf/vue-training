@@ -12,7 +12,12 @@ export default new Vuex.Store({
     ],
   },
   getters: {
+    // Property-Style Access
     completedToDos: (state) => state.toDos.filter((toDo) => toDo.done),
+
+    // Method-Style Access. Passing arguments to getters by returning a function
+    // Getters accessed via methods will run each time you call them, and the result is not cached.
+    getToDosById: (state) => (id) => state.toDos.find((toDo) => toDo.id === id),
   },
   mutations: {
     increment(state) {
