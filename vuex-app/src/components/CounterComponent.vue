@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div>getInCompletedToDo: {{ getInCompletedToDo }}</div>
     <div>getToDosByIdFromGetter: {{ getToDosByIdFromGetter }}</div>
     <div>completedToDosFromGetters: {{ completedToDosFromGetters }}</div>
     <div>doneToDosCount: {{ doneToDosCount }}</div>
@@ -41,6 +42,9 @@ export default {
     },
     getToDosByIdFromGetter() {
       return this.$store.getters.getToDosById(2);
+    },
+    getInCompletedToDo() {
+      return this.$store.getters.inCompletedToDo;
     },
   }),
   // We can also pass a string array to mapState when the name of a mapped computed property is
