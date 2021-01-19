@@ -15,6 +15,7 @@ export default new Vuex.Store({
     // Property-Style Access
     completedToDos: (state) => state.toDos.filter((toDo) => toDo.done),
     inCompletedToDo: (state) => state.toDos.filter((toDo) => toDo.done === false),
+    completedToDosLength: (state) => state.toDos.filter((toDo) => toDo.done).length,
 
     // Method-Style Access. Passing arguments to getters by returning a function
     // Getters accessed via methods will run each time you call them, and the result is not cached.
