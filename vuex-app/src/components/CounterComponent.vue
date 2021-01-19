@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div>completedToDosLength via mapGetters: {{ completedToDosLength }}</div>
     <div>getCompletedToDosLength: {{ getCompletedToDosLength }}</div>
     <div>getInCompletedToDo: {{ getInCompletedToDo }}</div>
     <div>getToDosByIdFromGetter: {{ getToDosByIdFromGetter }}</div>
@@ -13,7 +14,7 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'CounterComponent',
@@ -52,6 +53,9 @@ export default {
         return this.$store.getters.completedToDosLength;
       },
     }),
+    ...mapGetters([
+      'completedToDosLength',
+    ]),
   },
   // We can also pass a string array to mapState when the name of a mapped computed property is
   // the same as a state sub tree name like below
