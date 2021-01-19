@@ -27,30 +27,32 @@ export default {
   //     return this.$store.state.count;
   //   },
   // },
-  computed: mapState({
-    count: (state) => state.count,
-    countAlias: 'count',
-    dataFromStatePlusFromLocal(state) {
-      return state.count + this.localCount;
-    },
-    // Compute derived state based on store state
-    doneToDosCount() {
-      return this.$store.state.toDos.filter((toDo) => toDo.done).length;
-    },
-    // Accessing getters
-    completedToDosFromGetters() {
-      return this.$store.getters.completedToDos.length;
-    },
-    getToDosByIdFromGetter() {
-      return this.$store.getters.getToDosById(2);
-    },
-    getInCompletedToDo() {
-      return this.$store.getters.inCompletedToDo;
-    },
-    getCompletedToDosLength() {
-      return this.$store.getters.completedToDosLength;
-    },
-  }),
+  computed: {
+    ...mapState({
+      count: (state) => state.count,
+      countAlias: 'count',
+      dataFromStatePlusFromLocal(state) {
+        return state.count + this.localCount;
+      },
+      // Compute derived state based on store state
+      doneToDosCount() {
+        return this.$store.state.toDos.filter((toDo) => toDo.done).length;
+      },
+      // Accessing getters
+      completedToDosFromGetters() {
+        return this.$store.getters.completedToDos.length;
+      },
+      getToDosByIdFromGetter() {
+        return this.$store.getters.getToDosById(2);
+      },
+      getInCompletedToDo() {
+        return this.$store.getters.inCompletedToDo;
+      },
+      getCompletedToDosLength() {
+        return this.$store.getters.completedToDosLength;
+      },
+    }),
+  },
   // We can also pass a string array to mapState when the name of a mapped computed property is
   // the same as a state sub tree name like below
   // computed: mapState([
