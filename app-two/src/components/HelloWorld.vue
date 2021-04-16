@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <p><a v-bind:href="googleLink">Google Link</a></p>
     {{ stringData }}
     <h1>{{ msg }}</h1>
     <p>
@@ -43,6 +44,7 @@ export default {
   data() {
     return {
       stringData: 'This is from data',
+      googleLink: 'https://www.google.com/',
     };
   },
 };
