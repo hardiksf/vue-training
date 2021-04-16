@@ -1,5 +1,9 @@
 <template>
-  <div class="hello">
+  <div class="hello space-y-4">
+    <input v-bind:value="inputText" class="border-2">
+    <p class="h-56 flex justify-center">
+    <img v-bind:src="imageAddress" alt="An image"/></p>
+    <p>Another Random Number Plus 5: {{ randomNumberPlus5() }}</p>
     <p v-html="htmlContnet"></p>
     A Random Number: {{ randomNumber() }}
     <p><a v-bind:href="googleLink">Google Link</a></p>
@@ -48,11 +52,16 @@ export default {
       stringData: 'This is from data',
       googleLink: 'https://www.google.com/',
       htmlContnet: '<li>Html content</li>',
+      imageAddress: 'https://cdn.pixabay.com/photo/2020/08/09/15/44/tower-5475850_1280.jpg',
+      inputText: 'Input Text',
     };
   },
   methods: {
     randomNumber() {
       return Math.ceil(Math.random() * 10);
+    },
+    randomNumberPlus5() {
+      return this.randomNumber() + 5;
     },
   },
 };
