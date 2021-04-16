@@ -18,6 +18,11 @@ cd my-app
 vue add bootstrap-vue
 ```
 
+## To install tailwind
+```
+vue add tailwind
+```
+
 - Move these from devDependencies to dependencies if you chose air-bnb linter
 ```
 "@babel/polyfill": "^7.11.5",
