@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    A Random Number: {{ randomNumber() }}
     <p><a v-bind:href="googleLink">Google Link</a></p>
     {{ stringData }}
     <h1>{{ msg }}</h1>
@@ -46,6 +47,11 @@ export default {
       stringData: 'This is from data',
       googleLink: 'https://www.google.com/',
     };
+  },
+  methods: {
+    randomNumber() {
+      return Math.ceil(Math.random() * 10);
+    },
   },
 };
 </script>
