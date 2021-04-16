@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <p v-html="htmlContnet"></p>
     A Random Number: {{ randomNumber() }}
     <p><a v-bind:href="googleLink">Google Link</a></p>
     {{ stringData }}
@@ -46,6 +47,7 @@ export default {
     return {
       stringData: 'This is from data',
       googleLink: 'https://www.google.com/',
+      htmlContnet: '<li>Html content</li>',
     };
   },
   methods: {
