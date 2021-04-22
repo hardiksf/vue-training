@@ -1,5 +1,14 @@
 <template>
   <div class="hello space-y-4">
+    <div class="flex flex-col mx-64">
+      <button @click="increase" class="bg-black text-white font-bold p-2 m-1 rounded">
+        Increase</button>
+      <button v-on:click="decrease" class="bg-black text-white font-bold p-2 m-1 rounded">
+        Decrease</button>
+      <button class="bg-black text-white font-bold p-2 m-1 rounded">
+        counter: {{ counter }}</button>
+
+    </div>
     <input v-bind:value="inputText" class="border-2">
     <p class="h-56 flex justify-center">
     <img v-bind:src="imageAddress" alt="An image"/></p>
@@ -54,6 +63,7 @@ export default {
       htmlContnet: '<li>Html content</li>',
       imageAddress: 'https://cdn.pixabay.com/photo/2020/08/09/15/44/tower-5475850_1280.jpg',
       inputText: 'Input Text',
+      counter: 0,
     };
   },
   methods: {
@@ -62,6 +72,12 @@ export default {
     },
     randomNumberPlus5() {
       return this.randomNumber() + 5;
+    },
+    increase() {
+      this.counter += 1;
+    },
+    decrease() {
+      this.counter -= 1;
     },
   },
 };
