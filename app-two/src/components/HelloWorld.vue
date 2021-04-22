@@ -1,6 +1,9 @@
 <template>
   <div class="hello space-y-4">
     <div class="flex flex-col mx-64">
+      <button @click="increaseWithArgument(5)"
+        class="bg-black text-white font-bold p-2 m-1 rounded">
+        Increase with arguments</button>
       <button @click="increase" class="bg-black text-white font-bold p-2 m-1 rounded">
         Increase</button>
       <button v-on:click="decrease" class="bg-black text-white font-bold p-2 m-1 rounded">
@@ -75,6 +78,9 @@ export default {
     },
     increase() {
       this.counter += 1;
+    },
+    increaseWithArgument(number) {
+      this.counter += number;
     },
     decrease() {
       this.counter -= 1;
