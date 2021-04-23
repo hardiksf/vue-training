@@ -1,5 +1,7 @@
 <template>
   <div class="hello space-y-4">
+    <input type="text" class="border-2" @input="setTextFromInput">
+    <p>textFromInput: {{ textFromInput }}</p>
     <div class="flex flex-col mx-64">
       <button @click="increaseWithArgument(5)"
         class="bg-black text-white font-bold p-2 m-1 rounded">
@@ -67,9 +69,13 @@ export default {
       imageAddress: 'https://cdn.pixabay.com/photo/2020/08/09/15/44/tower-5475850_1280.jpg',
       inputText: 'Input Text',
       counter: 0,
+      textFromInput: '',
     };
   },
   methods: {
+    setTextFromInput(event) {
+      this.textFromInput = event.target.value;
+    },
     randomNumber() {
       return Math.ceil(Math.random() * 10);
     },
