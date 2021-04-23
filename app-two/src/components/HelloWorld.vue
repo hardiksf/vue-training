@@ -1,5 +1,10 @@
 <template>
   <div class="hello space-y-4">
+    Data binding and event handling (v-bind & event): <input type="text"
+    class="border" v-bind:value="textFromInput2" @keyup="displayText">
+    <p>v-modal: <input type="text" class="border" v-model="textFromInput2"></p>
+    <p>show text from input2 {{ textFromInput2 }}</p>
+    <button @click="resetInput" class="font-bold bg-yellow-400 p-2">Reset Input</button>
     <section id="assignment">
       <h2>Event Practice</h2>
       <!-- 1) Show an alert (any text of your choice) when the button is pressed -->
@@ -95,9 +100,16 @@ export default {
       textFromInput: '',
       userInput: '',
       userInput2: '',
+      textFromInput2: '',
     };
   },
   methods: {
+    resetInput() {
+      this.textFromInput2 = '';
+    },
+    displayText(event) {
+      this.textFromInput2 = event.target.value;
+    },
     displayUserInput2(event) {
       this.userInput2 = event.target.value;
     },
