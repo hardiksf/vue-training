@@ -1,5 +1,6 @@
 <template>
   <div class="hello space-y-4">
+    <p v-once>starting counter: {{ counter }}</p>
     <form action="text">
       <button @click.prevent="doSomething" class="bg-black text-white font-bold p-2">
         Vue's preventDefault: .prevent</button>
