@@ -1,5 +1,19 @@
 <template>
   <div class="hello space-y-4">
+    <section id="assignment">
+      <h2>Event Practice</h2>
+      <!-- 1) Show an alert (any text of your choice) when the button is pressed -->
+      <button @click="showAlert" class="text-gray-50 bg-gray-700 p-1 m-1">Show Alert</button>
+      <br />
+      <!-- 2) Register the user input on "keydown" and output it in the paragraph
+      (hint: event.target.value helps) -->
+      <input @keydown="displayUserInput" type="text" class="border">
+      <p>OUTPUT: {{ userInput }}</p>
+      <br />
+      <!-- 3) Repeat 2) but only output the entered value if the ENTER key was pressed -->
+      <input @keyup.enter="displayUserInput2" type="text" class="border-4"/>
+      <p>OUTPUT: {{ userInput2 }} </p>
+    </section>
     <p v-once>starting counter: {{ counter }}</p>
     <form action="text">
       <button @click.prevent="doSomething" class="bg-black text-white font-bold p-2">
@@ -79,9 +93,20 @@ export default {
       inputText: 'Input Text',
       counter: 0,
       textFromInput: '',
+      userInput: '',
+      userInput2: '',
     };
   },
   methods: {
+    displayUserInput2(event) {
+      this.userInput2 = event.target.value;
+    },
+    displayUserInput(event) {
+      this.userInput = event.target.value;
+    },
+    showAlert() {
+      alert('text in alert');
+    },
     doSomething() {
     },
     onSubmit(event) {
