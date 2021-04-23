@@ -1,5 +1,13 @@
 <template>
   <div class="hello space-y-4">
+    <form action="text">
+      <button @click.prevent="doSomething" class="bg-black text-white font-bold p-2">
+        Vue's preventDefault: .prevent</button>
+    </form>
+    <form action="text">
+      <button @click="onSubmit" class="bg-black text-white p-2 font-bold rounded">
+        native preventDefault</button>
+    </form>
     <input type="text" class="border-2" @input="setTextFromInput">
     <p>textFromInput: {{ textFromInput }}</p>
     <div class="flex flex-col mx-64">
@@ -73,6 +81,11 @@ export default {
     };
   },
   methods: {
+    doSomething() {
+    },
+    onSubmit(event) {
+      event.preventDefault();
+    },
     setTextFromInput(event) {
       this.textFromInput = event.target.value;
     },
