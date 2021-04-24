@@ -1,5 +1,9 @@
 <template>
   <div class="hello space-y-4">
+    <p><button @click="addNumber(5)" class="bg-gray-700 p-2 text-white font-bold">Add 5</button></p>
+    <p><button @click="addNumber(1)" class="p-2 bg-red-200" >Add 1</button></p>
+    displayResult: {{ displayResult }} <br>
+
     Data binding and event handling (v-bind & event): <input type="text"
     class="border" v-bind:value="textFromInput2" @keyup="displayText">
     <p>v-modal: <input type="text" class="border" v-model="textFromInput2"></p>
@@ -101,9 +105,32 @@ export default {
       userInput: '',
       userInput2: '',
       textFromInput2: '',
+      number: 0,
     };
   },
+  watch: {
+    displayResult() {
+      const that = this;
+      setTimeout(() => {
+        that.number = 0;
+      }, 2000);
+    },
+  },
+  computed: {
+    displayResult() {
+      if (this.number > 10) {
+        return 'Too much';
+      }
+      if (this.number < 10) {
+        return 'Add more';
+      }
+      return this.number;
+    },
+  },
   methods: {
+    addNumber(num) {
+      this.number += num;
+    },
     resetInput() {
       this.textFromInput2 = '';
     },
@@ -117,6 +144,7 @@ export default {
       this.userInput = event.target.value;
     },
     showAlert() {
+      // eslint-disable-next-line
       alert('text in alert');
     },
     doSomething() {
