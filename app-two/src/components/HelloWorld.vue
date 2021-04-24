@@ -1,5 +1,27 @@
 <template>
   <div class="hello space-y-4">
+    <input
+      type="text"
+      v-model="enteredValue"
+      class="p-2 border"
+    >
+    <button
+      @click="addtoList"
+      class="p-2 bg-yellow-400 font-extrabold">
+      Add to list
+    </button>
+    <br>
+    <p v-if="myList.length === 0">Add items to list</p>
+    <ul v-else class="flex flex-col">
+      <li v-for="(item, index) in myList" :key="index"
+      >
+        <button
+        @click="removeItem(index)"
+        class="p-2 m-1 bg-green-500"
+        >{{ item }}</button>
+      </li>
+</ul>
+
     <p><button @click="addNumber(5)" class="bg-gray-700 p-2 text-white font-bold">Add 5</button></p>
     <p><button @click="addNumber(1)" class="p-2 bg-red-200" >Add 1</button></p>
     displayResult: {{ displayResult }} <br>
@@ -106,6 +128,9 @@ export default {
       userInput2: '',
       textFromInput2: '',
       number: 0,
+      myList: [],
+      dislplayList: 'Empty',
+      enteredValue: '',
     };
   },
   watch: {
@@ -128,6 +153,13 @@ export default {
     },
   },
   methods: {
+    removeItem(index) {
+      this.myList.splice(index, 1);
+    },
+    addtoList() {
+      this.myList.push(this.enteredValue);
+      this.enteredValue = '';
+    },
     addNumber(num) {
       this.number += num;
     },
