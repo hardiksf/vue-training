@@ -1,5 +1,24 @@
 <template>
   <div class="hello space-y-4">
+    <div class="mb-4">
+      <input type="text"
+        v-model="enteredText"
+        class="p-2 border"
+      >
+      <button
+      @click="secondAddToList"
+      class="p-2 bg-yellow-400 font-extrabold text-3xl"
+      >+</button>
+      <ul v-if="isToggleOn"
+      class="flex flex-col">
+        <li v-for="item in secondList" :key="item">{{ item }}</li>
+      </ul>
+      <br>
+      <button
+      @click="toggleShowHide"
+        class="mt-4 p-2 bg-yellow-400 font-bold"
+      >{{ buttonText }}</button>
+    </div>
     <input
       type="text"
       v-model="enteredValue"
@@ -131,6 +150,9 @@ export default {
       myList: [],
       dislplayList: 'Empty',
       enteredValue: '',
+      enteredText: '',
+      secondList: [],
+      isToggleOn: true,
     };
   },
   watch: {
@@ -142,6 +164,9 @@ export default {
     },
   },
   computed: {
+    buttonText() {
+      return this.isToggleOn ? 'Hide list' : 'Show list';
+    },
     displayResult() {
       if (this.number > 10) {
         return 'Too much';
@@ -153,6 +178,13 @@ export default {
     },
   },
   methods: {
+    toggleShowHide() {
+      this.isToggleOn = !this.isToggleOn;
+    },
+    secondAddToList() {
+      this.secondList.push(this.enteredText);
+      this.enteredText = '';
+    },
     removeItem(index) {
       this.myList.splice(index, 1);
     },
