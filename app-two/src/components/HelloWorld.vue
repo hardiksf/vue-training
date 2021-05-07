@@ -79,11 +79,15 @@
       <button @click="increaseWithArgument(5)"
         class="bg-black text-white font-bold p-2 m-1 rounded">
         Increase with arguments</button>
-      <button @click="increase" class="bg-black text-white font-bold p-2 m-1 rounded">
+      <button @click="increase"
+        class="increment-text-button
+        bg-black text-white font-bold p-2 m-1 rounded">
         Increase</button>
       <button v-on:click="decrease" class="bg-black text-white font-bold p-2 m-1 rounded">
         Decrease</button>
-      <button class="bg-black text-white font-bold p-2 m-1 rounded">
+      <button
+        class="counter-text
+        bg-black text-white font-bold p-2 m-1 rounded">
         counter: {{ counter }}</button>
 
     </div>
