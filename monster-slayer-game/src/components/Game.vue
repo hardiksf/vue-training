@@ -9,7 +9,7 @@
     <section class="health-container player">
       <h2>Player Health</h2>
        <div class="healthbar">
-          <div class="healthbar-value"></div>
+          <div class="healthbar-value" :style="{width: playerHealth + '%'}"></div>
         </div>
     </section>
     <section class="control">
@@ -38,6 +38,11 @@ export default {
     attack() {
       const attackValue = getRandomNumber(3, 8);
       this.monsterHealth -= attackValue;
+      this.counterAttackByMonster();
+    },
+    counterAttackByMonster() {
+      const attackValue = getRandomNumber(4, 9);
+      this.playerHealth -= attackValue;
     },
   },
 };
