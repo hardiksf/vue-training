@@ -3,7 +3,7 @@
     <section class="health-container">
       <h2>Monster Health</h2>
       <div class="healthbar">
-          <div class="healthbar-value" :style="{width: monsterHealth + '%' }"></div>
+          <div class="healthbar-value" :style="monsterBarStyles"></div>
         </div>
     </section>
     <section class="health-container player">
@@ -33,6 +33,12 @@ export default {
       monsterHealth: 100,
       playerHealth: 100,
     };
+  },
+  computed: {
+    monsterBarStyles() {
+      return `{ width: ${this.monsterHealth}% }`;
+      // return '{ width: 90px }';
+    },
   },
   methods: {
     attack() {
