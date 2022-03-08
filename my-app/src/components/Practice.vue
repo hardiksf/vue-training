@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <input type="text" @input="updateName">
+      <input type="text" @input="updateName($event, 'Brown')">
       <p>Name: {{ name }}</p>
     </div>
     <button @click="add(5)">Add</button>
@@ -28,9 +28,9 @@ export default {
     };
   },
   methods: {
-    updateName(event) {
-      // JS native event object
-      this.name = event.target.value;
+    updateName(event, lastName) {
+      // event is JS native event object
+      this.name = `${event.target.value} ${lastName}`;
     },
     add(number) {
       this.counter += number;
