@@ -1,6 +1,15 @@
 <template>
   <div>
     <div>
+      <h2>To do list</h2>
+      <input type="text" v-model="enteredTask">
+      <button @click="addTask">Add task</button>
+      <ul>
+        <li v-for="task in tasks" :key="task"> {{task}}
+        </li>
+      </ul>
+    </div>
+    <div>
       <input type="text" @input="updateName($event, 'Brown')">
       <p>Name: {{ name }}</p>
     </div>
@@ -20,6 +29,8 @@ export default {
   name: "Practice",
   data() {
     return {
+      enteredTask: "",
+      tasks: [],
       name: "",
       counter: 0,
       googleLink: "https://www.google.com/",
@@ -28,6 +39,10 @@ export default {
     };
   },
   methods: {
+    addTask() {
+      this.tasks.push(this.enteredTask);
+      this.enteredTask = "";
+    },
     updateName(event, lastName) {
       // event is JS native event object
       this.name = `${event.target.value} ${lastName}`;
@@ -46,3 +61,7 @@ export default {
   },
 };
 </script>
+<style lang="sass" scoped>
+div
+  margin-top: 1rem
+</style>
