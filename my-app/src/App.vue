@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Practice/>
     <CoffeePlan/>
     <ClickCounter />
     <Activity />
@@ -11,15 +12,16 @@
 </template>
 
 <script>
-import Activity from './components/Activity.vue';
-import HelloWorld from './components/HelloWorld.vue';
-import Notes from './components/Notes.vue';
-import UsingAxios from './components/UsingAxios.vue';
-import ClickCounter from './components/ClickCounter.vue';
-import CoffeePlan from './components/CoffeePlan.vue';
+import Activity from "./components/Activity.vue";
+import HelloWorld from "./components/HelloWorld.vue";
+import Notes from "./components/Notes.vue";
+import UsingAxios from "./components/UsingAxios.vue";
+import ClickCounter from "./components/ClickCounter.vue";
+import CoffeePlan from "./components/CoffeePlan.vue";
+import Practice from "./components/Practice.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Activity,
     HelloWorld,
@@ -27,6 +29,7 @@ export default {
     UsingAxios,
     ClickCounter,
     CoffeePlan,
+    Practice,
   },
 };
 </script>

@@ -4,12 +4,12 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   mounted() {
     axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
       .then((response) => console.log(response));
   },
 };

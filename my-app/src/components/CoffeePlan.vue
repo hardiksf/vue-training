@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'CoffeePlan',
+  name: "CoffeePlan",
   props: {
     name: {
       type: String,
@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      plans: ['One Shot', 'Two Shots'],
+      plans: ["One Shot", "Two Shots"],
     };
   },
 };

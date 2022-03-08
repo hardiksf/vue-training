@@ -50,13 +50,13 @@ export default {
   data() {
     return {
       note: {
-        title: '',
-        detail: '',
+        title: "",
+        detail: "",
       },
       notes: [
         {
-          title: 'Grocery',
-          detail: 'Get produce, meat and drinks',
+          title: "Grocery",
+          detail: "Get produce, meat and drinks",
           date: new Date(Date.now()).toLocaleString(),
         },
       ],
