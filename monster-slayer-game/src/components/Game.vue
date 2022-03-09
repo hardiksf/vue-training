@@ -14,9 +14,15 @@
     </section>
     <section class="control">
         <button @click="attack">ATTACK</button>
-        <button @click="specialAttack">SPECIAL ATTACK</button>
+        <button :disabled="specialAttachRestriction" @click="specialAttack">SPECIAL ATTACK</button>
         <button>HEAL</button>
         <button>SURRENDER</button>
+    </section>
+    <section class="log">
+      <div>Current Round: {{ currentRound }}</div>
+      <div># of Attack: {{ attackCounter }}</div>
+      <div># of Special Attack {{ specialAttackCounter }}</div>
+      specialAttachRestriction {{specialAttachRestriction}}
     </section>
   </div>
 </template>
@@ -30,11 +36,17 @@ export default {
   name: 'Game',
   data() {
     return {
+      attackCounter: 0,
+      currentRound: 0,
       monsterHealth: 100,
       playerHealth: 100,
+      specialAttackCounter: 0,
     };
   },
   computed: {
+    specialAttachRestriction() {
+      return this.attackCounter / this.specialAttackCounter < 3;
+    },
     monsterBarStyles() {
       return { width: `${this.monsterHealth}%` };
       // return '{ width: 90% }';
@@ -42,11 +54,15 @@ export default {
   },
   methods: {
     specialAttack() {
+      this.specialAttackCounter += 1;
+      this.currentRound += 1;
       const attackValue = getRandomNumber(7, 12);
       this.monsterHealth -= attackValue;
       this.counterAttackByMonster();
     },
     attack() {
+      this.attackCounter += 1;
+      this.currentRound += 1;
       const attackValue = getRandomNumber(3, 8);
       this.monsterHealth -= attackValue;
       this.counterAttackByMonster();
