@@ -2,15 +2,19 @@
   <div>
     <div>
       <h2>To do list</h2>
-      <input type="text" v-model="enteredTask">
+      <input type="text" v-model="enteredTask" />
       <button @click="addTask">Add task</button>
-      <ul>
-        <li v-for="task in tasks" :key="task"> {{task}}
+      <ul v-if="isListDisplayed">
+        <li v-for="task in tasks" :key="task" @click="removeTask(key)">
+          <b-badge variant="success">{{ task }}</b-badge>
         </li>
       </ul>
+      <div v-if="isCaptionButtonDisplayed">
+        <button @click="toggleList">{{ toggleCaption }}</button>
+      </div>
     </div>
     <div>
-      <input type="text" @input="updateName($event, 'Brown')">
+      <input type="text" @input="updateName($event, 'Brown')" />
       <p>Name: {{ name }}</p>
     </div>
     <button @click="add(5)">Add</button>
@@ -29,6 +33,7 @@ export default {
   name: "Practice",
   data() {
     return {
+      isListDisplayed: true,
       enteredTask: "",
       tasks: [],
       name: "",
@@ -38,7 +43,21 @@ export default {
       titleText: "This is title",
     };
   },
+  computed: {
+    isCaptionButtonDisplayed() {
+      return this.tasks.length > 0;
+    },
+    toggleCaption() {
+      return this.isListDisplayed ? `Hide List` : `Display List`;
+    },
+  },
   methods: {
+    toggleList() {
+      this.isListDisplayed = !this.isListDisplayed;
+    },
+    removeTask(key) {
+      this.tasks.splice(key, 1);
+    },
     addTask() {
       this.tasks.push(this.enteredTask);
       this.enteredTask = "";
