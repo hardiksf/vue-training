@@ -36,8 +36,8 @@ export default {
   },
   computed: {
     monsterBarStyles() {
-      return `{ width: ${this.monsterHealth}% }`;
-      // return '{ width: 90px }';
+      return { width: `${this.monsterHealth}%` };
+      // return '{ width: 90% }';
     },
   },
   methods: {
