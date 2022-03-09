@@ -14,7 +14,7 @@
     </section>
     <section class="control">
         <button @click="attack">ATTACK</button>
-        <button>SPECIAL ATTACK</button>
+        <button @click="specialAttack">SPECIAL ATTACK</button>
         <button>HEAL</button>
         <button>SURRENDER</button>
     </section>
@@ -41,6 +41,11 @@ export default {
     },
   },
   methods: {
+    specialAttack() {
+      const attackValue = getRandomNumber(7, 12);
+      this.monsterHealth -= attackValue;
+      this.counterAttackByMonster();
+    },
     attack() {
       const attackValue = getRandomNumber(3, 8);
       this.monsterHealth -= attackValue;
