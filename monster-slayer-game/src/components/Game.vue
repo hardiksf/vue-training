@@ -15,14 +15,16 @@
     <section class="control">
         <button @click="attack">ATTACK</button>
         <button :disabled="specialAttachRestriction" @click="specialAttack">SPECIAL ATTACK</button>
-        <button>HEAL</button>
+        <button @click="healPlayer">HEAL</button>
         <button>SURRENDER</button>
     </section>
     <section class="log">
       <div>Current Round: {{ currentRound }}</div>
       <div># of Attack: {{ attackCounter }}</div>
       <div># of Special Attack {{ specialAttackCounter }}</div>
-      specialAttachRestriction {{specialAttachRestriction}}
+      <div>specialAttachRestriction {{specialAttachRestriction}}</div>
+      <div>monsterHealth {{ monsterHealth }} </div>
+      <div>playerHealth {{ playerHealth }} </div>
     </section>
   </div>
 </template>
@@ -53,11 +55,27 @@ export default {
     },
   },
   methods: {
+    healPlayer() {
+      this.currentRound += 1;
+      const healValue = getRandomNumber(8, 13);
+      if (this.playerHealth < 100) {
+        this.playerHealth += healValue;
+        if (this.playerHealth > 100) {
+          this.playerHealth = 100;
+        }
+      }
+    },
     specialAttack() {
       this.specialAttackCounter += 1;
       this.currentRound += 1;
       const attackValue = getRandomNumber(7, 12);
       this.monsterHealth -= attackValue;
+      if (this.monsterHealth < 0) {
+        this.monsterHealth = 0;
+      }
+      if (this.playerHealth < 0) {
+        this.playerHealth = 0;
+      }
       this.counterAttackByMonster();
     },
     attack() {
@@ -65,6 +83,12 @@ export default {
       this.currentRound += 1;
       const attackValue = getRandomNumber(3, 8);
       this.monsterHealth -= attackValue;
+      if (this.monsterHealth < 0) {
+        this.monsterHealth = 0;
+      }
+      if (this.playerHealth < 0) {
+        this.playerHealth = 0;
+      }
       this.counterAttackByMonster();
     },
     counterAttackByMonster() {
