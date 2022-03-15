@@ -23,7 +23,7 @@
         <button @click="attack">ATTACK</button>
         <button :disabled="specialAttachRestriction" @click="specialAttack">SPECIAL ATTACK</button>
         <button @click="healPlayer">HEAL</button>
-        <button>SURRENDER</button>
+        <button @click="surrender">SURRENDER</button>
     </section>
     <section class="log">
       <div>result {{ result }} </div>
@@ -94,6 +94,9 @@ export default {
     },
   },
   methods: {
+    surrender() {
+      this.result = 'monster';
+    },
     playAgain() {
       this.result = null;
       this.attackCounter = 0;
