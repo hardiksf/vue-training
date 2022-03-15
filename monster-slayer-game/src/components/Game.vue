@@ -9,16 +9,24 @@
     <section class="health-container player">
       <h2>Player Health</h2>
        <div class="healthbar">
-          <div class="healthbar-value" :style="{width: playerHealth + '%'}"></div>
+          <div class="healthbar-value" :style="playBarStyles"></div>
         </div>
     </section>
-    <section class="control">
+    <section class="game-end" v-if="result">
+      <h2>Game ended</h2>
+      <h3 v-if="result==='player'">You won</h3>
+      <h3 v-if="result==='monster'">You lost</h3>
+      <h3 v-if="result==='draw'">Game tied</h3>
+      <button class="play-again"  @click="playAgain">Play again</button>
+    </section>
+    <section v-else class="control">
         <button @click="attack">ATTACK</button>
         <button :disabled="specialAttachRestriction" @click="specialAttack">SPECIAL ATTACK</button>
         <button @click="healPlayer">HEAL</button>
         <button>SURRENDER</button>
     </section>
     <section class="log">
+      <div>result {{ result }} </div>
       <div>Current Round: {{ currentRound }}</div>
       <div># of Attack: {{ attackCounter }}</div>
       <div># of Special Attack {{ specialAttackCounter }}</div>
@@ -38,6 +46,7 @@ export default {
   name: 'Game',
   data() {
     return {
+      result: null,
       attackCounter: 0,
       currentRound: 0,
       monsterHealth: 100,
@@ -50,32 +59,65 @@ export default {
       return this.attackCounter / this.specialAttackCounter < 3;
     },
     monsterBarStyles() {
+      if (this.monsterHealth < 0) {
+        return { width: '0%' };
+      }
       return { width: `${this.monsterHealth}%` };
-      // return '{ width: 90% }';
+    },
+    playBarStyles() {
+      if (this.playerHealth < 0) {
+        return { width: '0%' };
+      }
+      return { width: `${this.playerHealth}%` };
+    },
+  },
+  watch: {
+    monsterHealth(value) {
+      if (value <= 0 && this.playerHealth <= 0) {
+        /* eslint-disable no-unused-expressions */
+        this.result = 'draw';
+      }
+      if (value <= 0) {
+        /* eslint-disable no-unused-expressions */
+        this.result = 'player';
+      }
+    },
+    playerHealth(value) {
+      if (value <= 0 && this.monsterHealth <= 0) {
+        /* eslint-disable no-unused-expressions */
+        this.result = 'draw';
+      }
+      if (value <= 0) {
+      /* eslint-disable no-unused-expressions */
+        this.result = 'monster';
+      }
     },
   },
   methods: {
+    playAgain() {
+      this.result = null;
+      this.attackCounter = 0;
+      this.currentRound = 0;
+      this.monsterHealth = 100;
+      this.playerHealth = 100;
+      this.specialAttackCounter = 0;
+    },
     healPlayer() {
       this.currentRound += 1;
-      const healValue = getRandomNumber(8, 13);
+      const healValue = getRandomNumber(10, 15);
       if (this.playerHealth < 100) {
         this.playerHealth += healValue;
         if (this.playerHealth > 100) {
           this.playerHealth = 100;
         }
       }
+      this.counterAttackByMonster();
     },
     specialAttack() {
       this.specialAttackCounter += 1;
       this.currentRound += 1;
       const attackValue = getRandomNumber(7, 12);
       this.monsterHealth -= attackValue;
-      if (this.monsterHealth < 0) {
-        this.monsterHealth = 0;
-      }
-      if (this.playerHealth < 0) {
-        this.playerHealth = 0;
-      }
       this.counterAttackByMonster();
     },
     attack() {
@@ -83,12 +125,6 @@ export default {
       this.currentRound += 1;
       const attackValue = getRandomNumber(3, 8);
       this.monsterHealth -= attackValue;
-      if (this.monsterHealth < 0) {
-        this.monsterHealth = 0;
-      }
-      if (this.playerHealth < 0) {
-        this.playerHealth = 0;
-      }
       this.counterAttackByMonster();
     },
     counterAttackByMonster() {
@@ -132,5 +168,11 @@ export default {
     padding: 1vw;
     margin: 1vw;
     width: 25vw;
+  }
+  .game-end{
+    border: 1px solid black;
+  }
+  .play-again {
+    margin-bottom: 2vw;
   }
 </style>
