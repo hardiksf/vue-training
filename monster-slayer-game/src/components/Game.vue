@@ -13,11 +13,11 @@
         </div>
     </section>
     <section class="game-end" v-if="result">
-      <h2>Game ended</h2>
-      <h3 v-if="result==='player'">You won</h3>
-      <h3 v-if="result==='monster'">You lost</h3>
-      <h3 v-if="result==='draw'">Game tied</h3>
-      <button class="play-again"  @click="playAgain">Play again</button>
+      <h2>Game Ended</h2>
+      <h3 v-if="result==='player'">You won!</h3>
+      <h3 v-if="result==='monster'">You lost!</h3>
+      <h3 v-if="result==='draw'">Game tied!</h3>
+      <button class="play-again"  @click="playAgain">Play Again</button>
     </section>
     <section v-else class="control">
         <button @click="attack">ATTACK</button>
@@ -174,6 +174,8 @@ export default {
   }
   .game-end{
     border: 1px solid black;
+    margin: 0 auto;
+    width: 50vw;
   }
   .play-again {
     margin-bottom: 2vw;

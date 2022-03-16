@@ -97,3 +97,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Demo from  monster-slayer-game
+![Demo](./demo-assets/game-demo.gif)
