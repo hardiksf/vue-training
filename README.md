@@ -1,10 +1,14 @@
 # my-app
 
 ## Demo
-### Notes
+
+### Monster-slayer-game demo
+![Demo](./monster-slayer-game/src/assets/game-demo.gif)
+
+### Notes demo
 ![notes.png](./my-app/src/assets/notes.gif)
 
-### Activity
+### Activity demo
 ![activity.png](./my-app/src/assets/activity.gif)
 
 ## To create a new project, run:
@@ -98,5 +102,3 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## Demo from  monster-slayer-game
-![Demo](./demo-assets/game-demo.gif)
