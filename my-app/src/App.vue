@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <ContactBook />
     <Practice/>
     <CoffeePlan/>
     <ClickCounter />
@@ -19,10 +20,12 @@ import UsingAxios from "./components/UsingAxios.vue";
 import ClickCounter from "./components/ClickCounter.vue";
 import CoffeePlan from "./components/CoffeePlan.vue";
 import Practice from "./components/Practice.vue";
+import ContactBook from "./components/ContactBook.vue";
 
 export default {
   name: "App",
   components: {
+    ContactBook,
     Activity,
     HelloWorld,
     Notes,
