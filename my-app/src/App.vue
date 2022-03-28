@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-    <ContactBook />
+    <h2>Contact Book</h2>
+    <ContactBook
+      name="John Smith"
+      phoneNumber="123-456-7890"
+      emailAddress="john@test.com"
+    ></ContactBook>
+    <ContactBook
+      name="Julie Brown"
+      phoneNumber="321-456-7890"
+      emailAddress="julie@test.com"
+    ></ContactBook>
     <Practice/>
     <CoffeePlan/>
     <ClickCounter />

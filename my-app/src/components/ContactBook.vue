@@ -1,12 +1,11 @@
 <template>
   <div>
-    <h2 class="basic-label medium-padding">Contact Book</h2>
     <div class="basic-label each-contact">
-      <h4>{{ contact.name }} </h4>
+      <h4>{{ name }} </h4>
       <button @click="toggleShowHideDetail">{{ toggleShowHideButtonText }}</button>
       <ul v-if="isDetailDisplayed">
-        <li>{{ contact.phone }}</li>
-        <li>{{ contact.email }}</li>
+        <li>{{ phoneNumber }}</li>
+        <li>{{ emailAddress }}</li>
       </ul>
     </div>
   </div>
@@ -14,14 +13,14 @@
 
 <script>
 export default {
+  props: [
+    "name",
+    "phoneNumber",
+    "emailAddress",
+  ],
   data() {
     return {
       isDetailDisplayed: false,
-      contact: {
-        name: "John Smith",
-        phone: "123-456-7890",
-        email: "john@test.com",
-      },
     };
   },
   computed: {
