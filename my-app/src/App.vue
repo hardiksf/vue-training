@@ -5,6 +5,7 @@
       name="John Smith"
       phoneNumber="123-456-7890"
       emailAddress="john@test.com"
+      :isFavorite="true"
     ></ContactBook>
     <ContactBook
       name="Julie Brown"

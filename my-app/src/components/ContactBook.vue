@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="basic-label each-contact">
-      <h4>{{ name }} </h4>
+      <h4>{{ name }} {{ displayFavorite }}</h4>
       <button @click="toggleShowHideDetail">{{ toggleShowHideButtonText }}</button>
+      <button @click="toggleFavorite">{{ toggleFavoriteText }}</button>
       <ul v-if="isDetailDisplayed">
         <li>{{ phoneNumber }}</li>
         <li>{{ emailAddress }}</li>
@@ -13,22 +14,46 @@
 
 <script>
 export default {
-  props: [
-    "name",
-    "phoneNumber",
-    "emailAddress",
-  ],
+  props: {
+    emailAddress: {
+      type: String,
+      required: true,
+    },
+    isFavorite: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       isDetailDisplayed: false,
+      isFriendFavorite: this.isFavorite,
     };
   },
   computed: {
+    displayFavorite() {
+      return this.isFriendFavorite ? ` (Favorite)` : ``;
+    },
+    toggleFavoriteText() {
+      return this.isFriendFavorite ? `UnFavorite` : `Favorite`;
+    },
     toggleShowHideButtonText() {
       return this.isDetailDisplayed ? `Hide Detail` : `Show detail`;
     },
   },
   methods: {
+    toggleFavorite() {
+      this.isFriendFavorite = !this.isFriendFavorite;
+    },
     toggleShowHideDetail() {
       this.isDetailDisplayed = !this.isDetailDisplayed;
     },
