@@ -17,6 +17,7 @@
       :emailAddress="friend.email"
       :isFavorite="friend.isFavorite"
       @toggle-favorite="toggleFavoriteStatus"
+      @delete-my-contact="deleteContact"
     ></ContactBook>
     <Practice/>
     <CoffeePlan/>
@@ -74,9 +75,12 @@ export default {
     };
   },
   methods: {
+    deleteContact(id) {
+      this.friends = this.friends.filter((friend) => friend.id !== id);
+    },
     addContact(name, phone, email) {
       const newContact = {
-        id: new Date().toISOString,
+        id: new Date().toISOString(),
         name,
         phone,
         email,
