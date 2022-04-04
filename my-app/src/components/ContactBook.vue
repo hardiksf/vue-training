@@ -37,6 +37,7 @@ export default {
       required: true,
     },
   },
+  emits: ["toggle-favorite"],
   data() {
     return {
       isDetailDisplayed: false,
