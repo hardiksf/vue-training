@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h2>Contact Book</h2>
+    <NewContact @add-contact="addContact"></NewContact>
     <!-- <ContactBook
       name="John Smith"
       phoneNumber="123-456-7890"
@@ -37,10 +38,12 @@ import ClickCounter from "./components/ClickCounter.vue";
 import CoffeePlan from "./components/CoffeePlan.vue";
 import Practice from "./components/Practice.vue";
 import ContactBook from "./components/ContactBook.vue";
+import NewContact from "./components/NewContact.vue";
 
 export default {
   name: "App",
   components: {
+    NewContact,
     ContactBook,
     Activity,
     HelloWorld,
@@ -71,6 +74,16 @@ export default {
     };
   },
   methods: {
+    addContact(name, phone, email) {
+      const newContact = {
+        id: new Date().toISOString,
+        name,
+        phone,
+        email,
+        isFavorite: false,
+      };
+      this.friends.push(newContact);
+    },
     toggleFavoriteStatus(friendId) {
       const identifiedFriend = this.friends.find((friend) => friend.id === friendId);
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
