@@ -1,16 +1,21 @@
 <template>
   <div id="app">
     <h2>Contact Book</h2>
-    <ContactBook
+    <!-- <ContactBook
       name="John Smith"
       phoneNumber="123-456-7890"
       emailAddress="john@test.com"
       :isFavorite="true"
-    ></ContactBook>
+    ></ContactBook> -->
     <ContactBook
-      name="Julie Brown"
-      phoneNumber="321-456-7890"
-      emailAddress="julie@test.com"
+      v-for="friend in friends"
+      :id="friend.id"
+      :key="friend.id"
+      :name="friend.name"
+      :phoneNumber="friend.phone"
+      :emailAddress="friend.email"
+      :isFavorite="friend.isFavorite"
+      @toggle-favorite="toggleFavoriteStatus"
     ></ContactBook>
     <Practice/>
     <CoffeePlan/>
@@ -44,6 +49,32 @@ export default {
     ClickCounter,
     CoffeePlan,
     Practice,
+  },
+  data() {
+    return {
+      friends: [
+        {
+          id: "john",
+          name: "John Smith",
+          phone: "123-456-7890",
+          email: "john@test.com",
+          isFavorite: true,
+        },
+        {
+          id: "julie",
+          name: "Julie Brown",
+          phone: "123-123-1234",
+          email: "julie@test.com",
+          isFavorite: false,
+        },
+      ],
+    };
+  },
+  methods: {
+    toggleFavoriteStatus(friendId) {
+      const identifiedFriend = this.friends.find((friend) => friend.id === friendId);
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
   },
 };
 </script>

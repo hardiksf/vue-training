@@ -15,6 +15,10 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     emailAddress: {
       type: String,
       required: true,
@@ -36,23 +40,22 @@ export default {
   data() {
     return {
       isDetailDisplayed: false,
-      isFriendFavorite: this.isFavorite,
     };
   },
   computed: {
     displayFavorite() {
-      return this.isFriendFavorite ? ` (Favorite)` : ``;
+      return this.isFavorite ? ` (Favorite)` : ``;
     },
     toggleFavoriteText() {
-      return this.isFriendFavorite ? `UnFavorite` : `Favorite`;
+      return this.isFavorite ? `UnFavorite` : `Favorite`;
     },
     toggleShowHideButtonText() {
-      return this.isDetailDisplayed ? `Hide Detail` : `Show detail`;
+      return this.isFavorite ? `Hide Detail` : `Show detail`;
     },
   },
   methods: {
     toggleFavorite() {
-      this.isFriendFavorite = !this.isFriendFavorite;
+      this.$emit("toggle-favorite", this.id);
     },
     toggleShowHideDetail() {
       this.isDetailDisplayed = !this.isDetailDisplayed;
