@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <ActiveUser :name="activeUser.name" :age="activeUser.age"></ActiveUser>
+    <UserData @update-data="updateUsersData"></UserData>
     <h2>Contact Book</h2>
     <NewContact @add-contact="addContact"></NewContact>
     <!-- <ContactBook
@@ -19,14 +21,14 @@
       @toggle-favorite="toggleFavoriteStatus"
       @delete-my-contact="deleteContact"
     ></ContactBook>
-    <Practice/>
-    <CoffeePlan/>
+    <Practice />
+    <CoffeePlan />
     <ClickCounter />
     <Activity />
     <UsingAxios />
     <Notes appTitle="Notes" />
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
@@ -40,6 +42,8 @@ import CoffeePlan from "./components/CoffeePlan.vue";
 import Practice from "./components/Practice.vue";
 import ContactBook from "./components/ContactBook.vue";
 import NewContact from "./components/NewContact.vue";
+import ActiveUser from "./components/ActiveUser.vue";
+import UserData from "./components/UserData.vue";
 
 export default {
   name: "App",
@@ -53,9 +57,16 @@ export default {
     ClickCounter,
     CoffeePlan,
     Practice,
+    ActiveUser,
+    UserData,
   },
   data() {
     return {
+      activeUser: {
+        id: "user1",
+        name: "John Smith",
+        age: 44,
+      },
       friends: [
         {
           id: "john",
@@ -75,6 +86,12 @@ export default {
     };
   },
   methods: {
+    updateUsersData(name, age) {
+      this.activeUser = {
+        name,
+        age: +age,
+      };
+    },
     deleteContact(id) {
       this.friends = this.friends.filter((friend) => friend.id !== id);
     },
@@ -89,7 +106,9 @@ export default {
       this.friends.push(newContact);
     },
     toggleFavoriteStatus(friendId) {
-      const identifiedFriend = this.friends.find((friend) => friend.id === friendId);
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId,
+      );
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
     },
   },
@@ -105,7 +124,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-[alt='Vue logo'] {
+[alt="Vue logo"] {
   margin-top: 20vw;
 }
 </style>
