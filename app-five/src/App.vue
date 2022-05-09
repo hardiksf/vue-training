@@ -1,23 +1,19 @@
 <template>
   <ul>
-    <ResourceItem
-      v-for="storedResource in storedResources"
-      :key="storedResource.id"
-      :title="storedResource.title"
-      :description="storedResource.description"
-      :link="storedResource.link"
+    <StoredResources
+      :storedResources="storedResources"
     />
   </ul>
 
 </template>
 
 <script>
-import ResourceItem from "./components/learning-resources/ResourceItem.vue";
+import StoredResources from "./components/learning-resources/StoredResources.vue";
 
 export default {
   name: "App",
   components: {
-    ResourceItem,
+    StoredResources,
   },
   data() {
     return {
