@@ -1,5 +1,6 @@
 <template>
   <li>
+    <BaseCard>
     <header>
       <h2>{{ title }}</h2>
       <p>{{ description }}</p>
@@ -7,6 +8,7 @@
     <nav>
       <a :href="link">Link to {{ title }} </a>
     </nav>
+   </BaseCard>
   </li>
 </template>
 

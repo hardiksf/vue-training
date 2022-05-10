@@ -1,19 +1,21 @@
 <template>
-  <ul>
-    <StoredResources
-      :storedResources="storedResources"
-    />
-  </ul>
-
+  <div>
+    <MyHeader title="My Header" />
+    <ul>
+      <StoredResources :storedResources="storedResources" />
+    </ul>
+  </div>
 </template>
 
 <script>
 import StoredResources from "./components/learning-resources/StoredResources.vue";
+import MyHeader from "./components/layouts/MyHeader.vue";
 
 export default {
   name: "App",
   components: {
     StoredResources,
+    MyHeader,
   },
   data() {
     return {
@@ -43,6 +45,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
