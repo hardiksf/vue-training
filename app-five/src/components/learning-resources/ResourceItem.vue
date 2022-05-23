@@ -8,6 +8,7 @@
     <nav>
       <a :href="link">Link to {{ title }} </a>
     </nav>
+    <BaseButton mode="basic">Delete</BaseButton>
    </BaseCard>
   </li>
 </template>
@@ -22,3 +23,9 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+button
+  margin: 2vw
+  padding: 1vw 2vw
+</style>

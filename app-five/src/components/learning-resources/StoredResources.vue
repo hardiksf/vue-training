@@ -27,4 +27,5 @@ export default {
 <style lang="sass" scoped>
 ul
   list-style-type: none
+  padding: 0
 </style>

@@ -1,9 +1,7 @@
 <template>
   <div>
     <MyHeader title="My Header" />
-    <ul>
-      <StoredResources :storedResources="storedResources" />
-    </ul>
+    <StoredResources :storedResources="storedResources" />
   </div>
 </template>
 
