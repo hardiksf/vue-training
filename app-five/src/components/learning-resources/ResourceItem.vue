@@ -8,7 +8,7 @@
     <nav>
       <a :href="link">Link to {{ title }} </a>
     </nav>
-    <BaseButton mode="light-color">Delete</BaseButton>
+    <BaseButton mode="flat">Delete</BaseButton>
    </BaseCard>
   </li>
 </template>

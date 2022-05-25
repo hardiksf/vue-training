@@ -1,10 +1,10 @@
 <template>
   <div>
     <BaseCard>
-      <BaseButton @click="setSelectedTab('StoredResources')">
+      <BaseButton @click="setSelectedTab('StoredResources')" :mode="storedResourcesButtonMode">
         Stored Resources
       </BaseButton>
-      <BaseButton @click="setSelectedTab('AddResource')">
+      <BaseButton @click="setSelectedTab('AddResource')" :mode="AddResourcesButtonMode">
         Add Resource
       </BaseButton>
     </BaseCard>
@@ -13,8 +13,6 @@
 </template>
 
 <script>
-// import BaseButton from "../UI/BaseButton.vue";
-// import BaseCard from "../UI/BaseCard.vue";
 import AddResource from "./AddResource.vue";
 import StoredResources from "./StoredResources.vue";
 
@@ -22,8 +20,6 @@ export default {
   components: {
     AddResource,
     StoredResources,
-    // BaseCard,
-    // BaseButton,
   },
   data() {
     return {
@@ -44,6 +40,16 @@ export default {
       ],
     };
   },
+
+  computed: {
+    storedResourcesButtonMode() {
+      return this.selectedTab === "StoredResources" ? null : "flat";
+    },
+    AddResourcesButtonMode() {
+      return this.selectedTab === "AddResource" ? null : "flat";
+    },
+  },
+
   provide() {
     return { resources: this.storedResources };
   },

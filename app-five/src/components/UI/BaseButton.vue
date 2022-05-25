@@ -12,12 +12,20 @@ export default {
 
 <style lang="sass" scoped>
 button
-  background-color: purple
+  background-color: indigo
   color: white
   border: none
   margin: 2vw
   padding: 1vw 2vw
-.light-color
-  background-color: #b298dc //light purple
-  color: black
+
+button:hover, button:active
+  background-color: #270041
+
+.flat
+  background-color: transparent //light purple
+  color: indigo
+
+.flat:hover, .flat:active
+  background-color: #edd2ff
+
 </style>
