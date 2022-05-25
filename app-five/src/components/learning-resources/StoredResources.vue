@@ -1,7 +1,7 @@
 <template>
   <ul>
     <ResourceItem
-      v-for="storedResource in storedResources"
+      v-for="storedResource in resources"
       :key="storedResource.id"
       :title="storedResource.title"
       :description="storedResource.description"
@@ -15,9 +15,7 @@ import ResourceItem from "./ResourceItem.vue";
 
 export default {
   name: "StoredResources",
-  props: {
-    storedResources: Object,
-  },
+  inject: ["resources"],
   components: {
     ResourceItem,
   },

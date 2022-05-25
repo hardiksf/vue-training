@@ -1,19 +1,19 @@
 <template>
   <div>
     <MyHeader title="My Header" />
-    <StoredResources :storedResources="storedResources" />
+    <TheResources />
   </div>
 </template>
 
 <script>
-import StoredResources from "./components/learning-resources/StoredResources.vue";
 import MyHeader from "./components/layouts/MyHeader.vue";
+import TheResources from "./components/learning-resources/TheResources.vue";
 
 export default {
   name: "App",
   components: {
-    StoredResources,
     MyHeader,
+    TheResources,
   },
   data() {
     return {
