@@ -15,24 +15,6 @@ export default {
     MyHeader,
     TheResources,
   },
-  data() {
-    return {
-      storedResources: [
-        {
-          id: "official-guide",
-          title: "Official Guide",
-          description: "Learn Vue",
-          link: "https//vuejs.org",
-        },
-        {
-          id: "google",
-          title: "Google",
-          description: "Learn Google",
-          link: "https//google.com ",
-        },
-      ],
-    };
-  },
 };
 </script>
 

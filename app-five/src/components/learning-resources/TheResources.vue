@@ -29,13 +29,13 @@ export default {
           id: "official-guide",
           title: "Official Guide",
           description: "Learn Vue",
-          link: "https//vuejs.org",
+          link: "https://vuejs.org",
         },
         {
           id: "google",
           title: "Google",
           description: "Learn Google",
-          link: "https//google.com ",
+          link: "https://google.com ",
         },
       ],
     };
