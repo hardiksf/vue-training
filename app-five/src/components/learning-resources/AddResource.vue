@@ -1,5 +1,13 @@
 <template>
   <div>
+    <BaseDialog v-if="isInputInvalid" title="Input is invalid">
+      <template #description>
+        <p>Please enter at least one character in each field</p>
+      </template>
+      <template #actions>
+        <BaseButton @click="confirmError">Sure!</BaseButton>
+      </template>
+    </BaseDialog>
     <BaseCard>
       <form @submit.prevent="submitData ">
         <div class="form-control">
@@ -26,11 +34,24 @@
 <script>
 export default {
   inject: ["addResource"],
+  data() {
+    return {
+      isInputInvalid: false,
+    };
+  },
   methods: {
+    confirmError() {
+      this.isInputInvalid = false;
+    },
     submitData() {
       const enteredTitle = this.$refs.enteredTitle.value;
       const enteredDescription = this.$refs.enteredDescription.value;
       const enteredUrl = this.$refs.enteredUrl.value;
+
+      if (enteredTitle.trim() === "" || enteredDescription.trim() === "" || enteredUrl.trim() === "") {
+        this.isInputInvalid = true;
+        return;
+      }
 
       this.addResource(enteredTitle, enteredDescription, enteredUrl);
     },
