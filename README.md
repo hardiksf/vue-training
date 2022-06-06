@@ -2,6 +2,9 @@
 
 ## Demo
 
+### Learning Resources (app-five) demo
+![Demo](./app-five/src/assets/learning-resources.gif)
+
 ### Monster-slayer-game demo
 ![Demo](./monster-slayer-game/src/assets/game-demo.gif)
 
