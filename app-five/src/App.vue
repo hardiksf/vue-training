@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MyHeader title="My Header" />
+    <MyHeader title="Learning Resources" />
     <TheResources />
   </div>
 </template>
