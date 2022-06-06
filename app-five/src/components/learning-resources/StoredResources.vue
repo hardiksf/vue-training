@@ -6,6 +6,7 @@
       :title="storedResource.title"
       :description="storedResource.description"
       :link="storedResource.link"
+      :id="storedResource.id"
     />
   </ul>
 </template>

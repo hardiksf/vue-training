@@ -8,7 +8,7 @@
     <nav>
       <a :href="link">Link to {{ title }} </a>
     </nav>
-    <BaseButton mode="flat">Delete</BaseButton>
+    <BaseButton mode="flat" @click="deleteResource(id)">Delete</BaseButton>
    </BaseCard>
   </li>
 </template>
@@ -17,9 +17,11 @@
 export default {
   name: "ResourceItem",
   props: {
+    id: String,
     title: String,
     description: String,
     link: String,
   },
+  inject: ["deleteResource"],
 };
 </script>
