@@ -1,5 +1,3 @@
-# my-app
-
 ## Demo
 
 ### Learning Resources (app-five) demo
@@ -77,7 +75,7 @@ export default {
 </script>
 ```
 
-## Project setup (from my-app location)
+## Project setup (from relevant location)
 ```
 npm install
 ```
