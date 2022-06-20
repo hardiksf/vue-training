@@ -12,7 +12,7 @@
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?
-        <select id="referrer" name="referrer">
+        <select id="referrer" name="referrer" v-model="userReferrer">
           <option value="google">Google</option>
           <option value="wom">Word of mouth</option>
           <option value="newspaper">Newspaper</option>
@@ -67,6 +67,7 @@ export default {
     return {
       userName: "",
       userAge: null, // vue automatically converts this to #  because type="number in html above
+      userReferrer: "wom",
     };
   },
   methods: {
@@ -75,6 +76,8 @@ export default {
       this.userName = "";
       console.log(`userAge: `, this.userAge);
       this.userAge = null;
+      console.log(`userReferrer: `, this.userReferrer);
+      this.userReferrer = "wom";
     },
   },
 };
