@@ -2,7 +2,7 @@
   <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="user-name">Your Name
-        <input id="user-name" name="user-name" type="text" />
+        <input id="user-name" name="user-name" type="text" v-model="userName"/>
       </label>
     </div>
     <div class="form-control">
@@ -63,8 +63,15 @@
 
 <script>
 export default {
+  data() {
+    return {
+      userName: "",
+    };
+  },
   methods: {
-    submitForm() {},
+    submitForm() {
+      console.log(`userName: `, this.userName);
+    },
   },
 };
 </script>
