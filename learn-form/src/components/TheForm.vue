@@ -23,17 +23,20 @@
       <h2>What are you interested in?</h2>
       <div>
         <label for="interest-news">News
-          <input id="interest-news" name="interest" type="checkbox" />
+          <input id="interest-news"
+          name="interest" type="checkbox" value="news" v-model="userInterest"/>
         </label>
       </div>
       <div>
         <label for="interest-tutorials">Tutorials
-          <input id="interest-tutorials" name="interest" type="checkbox" />
+          <input id="interest-tutorials"
+          name="interest" type="checkbox" value="tutorials" v-model="userInterest"/>
         </label>
       </div>
       <div>
         <label for="interest-nothing">Nothing
-          <input id="interest-nothing" name="interest" type="checkbox" />
+          <input id="interest-nothing"
+          name="interest" type="checkbox" value="nothing" v-model="userInterest"/>
         </label>
       </div>
     </div>
@@ -41,17 +44,26 @@
       <h2>How do you learn?</h2>
       <div>
         <label for="how-video">Video Courses
-          <input id="how-video" name="how" type="radio" />
+          <input id="how-video" name="how" type="radio" value="video" v-model="learn"/>
         </label>
       </div>
       <div>
         <label for="how-blogs">Blogs
-          <input id="how-blogs" name="how" type="radio" />
+          <input id="how-blogs" name="how" type="radio" value="blogs" v-model="learn" />
         </label>
       </div>
       <div>
         <label for="how-other">Other
-          <input id="how-other" name="how" type="radio" />
+          <input id="how-other" name="how" type="radio" value="other" v-model="learn"/>
+        </label>
+      </div>
+    </div>
+     <div class="form-control">
+      <h2>Accept Terms?</h2>
+      <div>
+        <label for="terms">Select checkbox to accept terms
+          <input id="terms"
+          name="terms" type="checkbox" value="terms" v-model="agreedWithTerms"/>
         </label>
       </div>
     </div>
@@ -68,6 +80,9 @@ export default {
       userName: "",
       userAge: null, // vue automatically converts this to #  because type="number in html above
       userReferrer: "wom",
+      userInterest: [],
+      learn: "",
+      agreedWithTerms: false,
     };
   },
   methods: {
@@ -78,6 +93,12 @@ export default {
       this.userAge = null;
       console.log(`userReferrer: `, this.userReferrer);
       this.userReferrer = "wom";
+      console.log(`Multiple checkboxes: `, this.userInterest);
+      console.log(`Radio button: `, this.learn);
+      this.userInterest = [];
+      this.learn = "";
+      console.log(`Single checkbox`, this.agreedWithTerms);
+      this.agreedWithTerms = false;
     },
   },
 };
@@ -144,5 +165,9 @@ button:hover,
 button:active {
   border-color: #002350;
   background-color: #002350;
+}
+
+h2 {
+  font-size: 1.3rem;
 }
 </style>
