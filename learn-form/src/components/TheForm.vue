@@ -7,7 +7,7 @@
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)
-        <input id="age" name="age" type="number" />
+        <input id="age" name="age" type="number" v-model="userAge" />
       </label>
     </div>
     <div class="form-control">
@@ -66,11 +66,15 @@ export default {
   data() {
     return {
       userName: "",
+      userAge: null, // vue automatically converts this to #  because type="number in html above
     };
   },
   methods: {
     submitForm() {
       console.log(`userName: `, this.userName);
+      this.userName = "";
+      console.log(`userAge: `, this.userAge);
+      this.userAge = null;
     },
   },
 };
