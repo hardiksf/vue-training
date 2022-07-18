@@ -123,7 +123,7 @@ label {
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: 1.3rem;
   margin: 0.5rem 0;
 }
 
@@ -167,7 +167,4 @@ button:active {
   background-color: #002350;
 }
 
-h2 {
-  font-size: 1.3rem;
-}
 </style>
