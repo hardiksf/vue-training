@@ -67,6 +67,9 @@
         </label>
       </div>
     </div>
+    <div class="form-control">
+      <RatingControl v-model="rating"/>
+    </div>
     <div>
       <button>Save Data</button>
     </div>
@@ -74,7 +77,13 @@
 </template>
 
 <script>
+
+import RatingControl from "./RatingControl.vue";
+
 export default {
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: "",
@@ -83,6 +92,7 @@ export default {
       userInterest: [],
       learn: "",
       agreedWithTerms: false,
+      rating: null,
     };
   },
   methods: {
@@ -99,6 +109,8 @@ export default {
       this.learn = "";
       console.log(`Single checkbox`, this.agreedWithTerms);
       this.agreedWithTerms = false;
+      console.log("Rating:", this.rating);
+      this.rating = null;
     },
   },
 };
