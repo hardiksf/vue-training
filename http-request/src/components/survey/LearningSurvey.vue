@@ -73,6 +73,29 @@ export default {
       }
       );
 
+      //For using Axios instead of fetch
+      /**
+       * 
+       * Instead of:
+       * fetch('https://vue-http-demo-85e9e.firebaseio.com/surveys.json', {
+       *  method: 'POST',
+       *  headers: {
+       *    'Content-Type': 'application/json',
+       *  },
+       *  body: JSON.stringify({
+       *    name: this.enteredName,
+       *    rating: this.chosenRating,
+       *  }),
+       * });
+       * you can write this code with Axios:
+       * 
+       * import axios from 'axios'; // at the start of your <script> tag, before you "export default ..."
+       * axios.post('https://vue-http-demo-85e9e.firebaseio.com/surveys.json', {
+       *  name: this.enteredName,
+       *  rating: this.chosenRating,
+       * });
+       */
+
       this.enteredName = '';
       this.chosenRating = null;
     },
