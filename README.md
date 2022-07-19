@@ -18,6 +18,13 @@ vue create my-app
 cd my-app
 ```
 
+## To use Firebase Realtime Database - free version
+- Go to Firebase site.
+- Click on `Create a project`, and complete all steps.
+- Go to `Realtime Database` in your project.
+- Click on `Create Database`.
+- Choose `Start in test mode` and click enable.
+
 ## To install the bootstrap-vue plugin...
 ```
 vue add bootstrap-vue
