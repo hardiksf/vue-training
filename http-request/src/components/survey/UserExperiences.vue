@@ -6,6 +6,7 @@
         <base-button @click="loadExperiences">Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Data is loading...</p>
+      <p v-else-if="!isLoading && errorMessage"> {{ errorMessage }} </p>
       <p v-else-if="!isLoading && (!results || results.length === 0)">There is no data to display. Please submit experience first.</p>
       <ul v-else>
         <survey-result
@@ -30,12 +31,14 @@ export default {
     return {
       results: [],
       isLoading: false,
+      errorMessage: null,
     };
   },
   methods: {
     loadExperiences() {
       this.isLoading = true;
       fetch("https://vue-http-demo-5562c-default-rtdb.firebaseio.com/surveys.json")
+      // fetch("https://vue-http-demo-5562c-default-rtdb.firebaseio.com/surveys")
       .then( (response) => { 
         if (response.ok) {
            return  response.json();
@@ -52,6 +55,11 @@ export default {
           });
         }
         this.results = results;
+       })
+       .catch((error) => {
+        this.isLoading = false;
+        console.log(error);
+        this.errorMessage = `Cath all error. Specific error: ${error}`
        });
     },
   },
