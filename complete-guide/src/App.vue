@@ -1,6 +1,7 @@
 <template>
 <div>
-  <MyComponent msg="Welcome to Your Vue.js App"/>
+  <MyReactivity/>
+  <MyComponent/>
   
   <HelloWorld msg="Welcome to Your Vue.js App"/>
   <img alt="Vue logo" src="./assets/logo.png">
@@ -8,12 +9,14 @@
 </template>
 
 <script>
+import MyReactivity from './components/MyReactivity.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import MyComponent from './components/MyComponent.vue';
 
 export default {
   name: 'App',
   components: {
+    MyReactivity,
     HelloWorld,
     MyComponent
   }
